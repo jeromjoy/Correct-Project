@@ -1,0 +1,165 @@
+{% extends "webapp/header.html" %}
+{% block search %}
+    
+<div class="head-article">
+<h1 class="article-headline">{{News.title}}</h1>
+
+    <p>{{News.articleurl}}</br>
+<span class="createddate">Created on: {{News.createddate}}</span>
+</br>Author :{{News.author}}</p>
+<p class="description">{{News.article}}<a href="{{News.articleurl}}">Read more</a></p>
+
+</div>
+
+  
+
+<div style="height: 3px;"></div>  
+ <table cellspacing="0" cellpadding="0">  
+     <tbody>
+{% if News.totalScore != None %}
+<tr class="{{News.totalScore.style}} score-wrapper result">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.totalScore.score}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>{{News.totalScore.description}}.</h2>
+    
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+{% if News.category != None %}
+<tr class="{{News.category.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.category.viewscore}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>News Category:<strong>{{News.category.title}}</strong></h2>
+    <p>Based on the contents of the website the website is classified as {{News.category.title}}  </p>
+  
+</div>
+ </td>       
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+{% if News.grammar != None %}
+<tr class="{{News.grammar.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.grammar.score}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>Grammar Check</h2>
+    <p>Based on the grammar check, the article has been rated {{News.grammar.percentScore}} percent accurate. </br>
+    The grammer check is verified using textgears.com</p>
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>       
+{% endif %}
+{% if News.wordcount != None %}
+<tr class="{{News.wordcount.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.wordcount.score}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>Word count</h2>
+    <p>Based on verifying different news source we have determined that most articles keep a word count of maximum 100 per paragraph</br>
+    The word count on this articles does{% if News.wordcount.score == 0 %} not {% else %} {% endif %}match with popular news sources.</p>
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+
+{% if News.authorScore != None %}
+<tr class="{{News.authorScore.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.authorScore.score}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>Author</h2>
+    <p>News articles are most reliable when it has an author listed on it. But we can only rely on articles from popular and trusted sites. Grouping this together, we can score it {{News.authorScore.score}}.</p>
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+{% if News.subUrl != None %}
+<tr class="{{News.subUrl.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.subUrl.score}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>Sub Url</h2>
+    <p>News articles mostly use references to represent there news source as reliable and users donot check these details and thus doesnot undergo verification. Using a list of multiple sites domain approved by professionals we can blacklist the sources and based on that this article is scored {{News.subUrl.score}}.</p>
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+{% if News.datecheck != None %}
+<tr class="{{News.datecheck.style}} score-wrapper ">
+<td class="score">
+<div class="hexagon">
+    <span class="shadowcover"></span>
+    <span class="score">{{News.datecheck.viewscore}}</span>
+</div>
+</td>
+<td>
+<div class="explanation">
+    <h2>Date Check</h2>
+    <p>Its more likely that news article from fake sites live much longer in the social media than real news</br>
+    The article is scored {{News.datecheck.score}} based on the created date of  article.</p>
+  
+</div>
+</td>
+        
+</tr>
+<tr style="height: 3px;">
+</tr>
+{% endif %}
+
+ </tbody>
+ </table>    
+{% endblock %}

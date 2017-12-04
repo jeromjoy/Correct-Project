@@ -1,0 +1,57 @@
+<!-- This is from displaying content which would be header and footer on every web page -->
+{% extends "webapp/header.html" %}
+{% block url %}
+{% load staticfiles %}
+<style>
+.button3 {
+background-color: #f44336; /* Red */
+background-color: #779da7; /* Green */
+border: none;
+color: white;
+padding: 0px 18px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 0px 0px;
+cursor: pointer;
+ }
+ 
+</style>
+<img src="{% static "images/webLogoWhite.png" %}" alt="My image" style="max-width: 300px;"/>
+<link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}" type= 'text/css'/>
+
+<!-- <p>Paste your url in the search box</p> -->
+<div class="container" style="margin-top: 5%;">
+    <div class="col-md-6 col-md-offset-3">
+
+        <!-- Search Form -->
+        <form action="{% url 'index' %}" method="post"> {% csrf_token %}
+
+        <!-- <form role="form"> -->
+
+        <!-- Search Field -->
+            <div class="row">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control input-lg"  type="text" name="url" value="" placeholder="Paste your url here" required/>
+                        <span class="input-group-btn">
+                          <!-- onclick="alert('Fake or Real?')" -->
+                            <!-- <p><label for="url" >Date:</label><input type="text" name="url" value= "" /></p> -->
+                            <!-- <input type="submit" value="Submit"/> -->
+
+                            <button class="btn btn-danger btn-lg" onclick="call_counter()" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"><span style="margin-left:10px;">Search</span></button>
+                        </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <!-- End of Search Form -->
+        {{form}}
+
+    </div>
+</div>
+<h1>{{ index.data }}</h1>
+{% endblock %}

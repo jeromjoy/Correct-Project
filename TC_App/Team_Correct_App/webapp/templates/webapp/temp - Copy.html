@@ -1,0 +1,27 @@
+{% extends "webapp/header.html" %}
+{% include "webapp/includes/extras.html"%}
+{% block upload %}
+<style>
+h3 {
+    color: Red;
+}
+</style>
+
+<br>
+<br>
+<h2>{{News.title}}</h2>
+<p>{{News.author}}</p>
+<br>
+<h3>Rating Score: {{News.scoredomain}} {{News.domaintype}}</h3>
+<br>
+<h4>CreatedDate: {{News.createddate}}</h4>
+<h4>FetchedDate: {{News.fetcheddate}}</h4>
+<br>
+<text>{{News.article}}</text>
+<br>
+<br>
+<p>{{News.articleurl}}</P>
+
+
+
+{% endblock %}s

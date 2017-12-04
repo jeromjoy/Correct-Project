@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>News Indicator Website</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<!-- <link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}" type= 'text/css'/> -->
+	<link rel='stylesheet' href="{% static 'css/design.css' %}" type= 'text/css'/>
+
+</head>
+<style>
+.button3 {
+background-color: #f44336; /* Red */
+background-color: #779da7; /* Green */
+border: none;
+color: white;
+padding: 0px 18px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 0px 0px;
+cursor: pointer;
+ }
+ .setbg {
+    background-color: #FFFFFF;
+ }
+</style>
+<body >
+	
+	<div class="jumbotron text-center setbg">
+    {% block url %}
+	{% endblock %}
+	{% block search %}
+	{% endblock %}
+	</div>
+</body>
+
+</html>
